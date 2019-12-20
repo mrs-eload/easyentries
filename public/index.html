@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Easy Entry</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="./vendors/material.min.js"></script>
+    <link rel="stylesheet" href="./vendors/material.min.css" />
+    <link href="./app.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">IVAO FR Holding Entry Tool</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Controls</span>
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col">
+            </div>
+        </div>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p id="plane_heading"></p>
+                <p id="plane_radial"></p>
+                <input class="mdl-slider mdl-js-slider" data-obj="plane" id="progress" step="1" type="range" min="0" max="360" value="0" />
+            </div>
+            <div class="mdl-cell mdl-cell--6-col">
+                <p id="outbound_radial"></p>
+                <input class="mdl-slider mdl-js-slider" data-obj="axis" id="outbound_progress" step="1" type="range" min="0" max="360" value="0" />
+            </div>
+            <div class="entry-tool" id="entry-tool">
+                <canvas id="entry-tool-canvas">
+                </canvas>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div id="info" style="position:absolute; top: 0; left: 0; width: 100%;"></div>
+<script src="http://localhost:8081/app.es5.js"></script>
+
+</body>
+</html>
