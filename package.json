@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "description": "Interactive entry tool",
-  "repository": "",
+  "repository": "https://gitlab.com/ivao-fr/easyentries.git",
   "license": "Private",
   "devDependencies": {
     "babel": "^6.23.0",
