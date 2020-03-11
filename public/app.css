@@ -67,11 +67,34 @@ html, body {
     text-align: center;
 }
 
+.mdl-textfield{
+    width: 90px;
+    margin: 0 15px;
+}
+.mdl-checkbox{
+    width: initial;
+}
+p {
+    font-size: 20px;
+}
+
 #entry-tool-canvas{
     position: relative;
-    height:800px;
-    width: 800px;
+    height:600px;
+    width: 600px;
     margin:auto;
+}
+
+.switchlang{
+    background: #345982;
+    color: #fff;
+    border: 1px solid #466c98;
+    margin: 0 5px;
+}
+
+.switchlang.active{
+    color: #000;
+    background: #FFF;
 }
 
 #deg_val{

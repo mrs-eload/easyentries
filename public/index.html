@@ -16,37 +16,54 @@
             <span class="mdl-layout-title">IVAO FR Holding Entry Tool</span>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
+
+            <button data-lang="en" class="switchlang mdl-button mdl-js-button">EN</button>
+            <button data-lang="fr" class="switchlang mdl-button mdl-js-button active">FR</button>
             <!-- Navigation. We hide it in small screens. -->
         </div>
     </header>
-    <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Controls</span>
-        <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--12-col">
-            </div>
-        </div>
-    </div>
     <main class="mdl-layout__content">
         <div class="page-content">
-            <div class="mdl-cell mdl-cell--6-col">
-                <p id="plane_heading"></p>
-                <p id="plane_radial"></p>
-                <input class="mdl-slider mdl-js-slider" data-obj="plane" id="progress" step="1" type="range" min="0" max="360" value="0" />
-            </div>
-            <div class="mdl-cell mdl-cell--6-col">
-                <p id="outbound_radial"></p>
-                <input class="mdl-slider mdl-js-slider" data-obj="axis" id="outbound_progress" step="1" type="range" min="0" max="360" value="0" />
-            </div>
-            <div class="entry-tool" id="entry-tool">
-                <canvas id="entry-tool-canvas">
-                </canvas>
-            </div>
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--6-col">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <p><h5 id="plane_heading"></h5>
+                            <span id="plane_radial"></span></p>
+                            <div class="mdl-textfield mdl-js-textfield">
+                                <input class="mdl-textfield__input" data-obj="plane" type="number" value="360" min="0" max="360" id="plane-hdg-input">
+                                <span class="mdl-textfield__error translatable" data-trans="heading_error">Heading must be between 0 and 360</span>
+                            </div>
+                            <button id="plane-heading-btn" data-obj="plane" class="mdl-button mdl-js-button mdl-button--raised">OK</button>
+                            <input class="mdl-slider mdl-js-slider" data-obj="plane" id="progress" step="1" type="range" min="0" max="360" value="0" />
+                        </div>
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <h5 id="outbound_radial"></h5>
+                            <div class="mdl-textfield mdl-js-textfield">
+                                <input class="mdl-textfield__input" type="number" data-obj="axis" value="90" min="0" max="360" id="outbound-input">
+                                <span class="mdl-textfield__error translatable" data-trans="outbound_error">Radial must be between 0 and 360</span>
+                            </div>
+                            <button id="outbound-btn" data-obj="axis" class="mdl-button mdl-js-button mdl-button--raised">OK</button>
+                            <input class="mdl-slider mdl-js-slider" data-obj="axis" id="outbound_progress" step="1" type="range" min="0" max="360" value="0" />
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-cell mdl-cell--6-col">
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="enable_nnstd">
+                        <input type="checkbox" id="enable_nnstd" class="mdl-checkbox__input">
+                        <h5 class="mdl-checkbox__label translatable" data-trans="left_hand">Left hand</h5>
+                    </label>
+                    <div class="entry-tool" id="entry-tool">
+                        <canvas id="entry-tool-canvas">
+                        </canvas>
+                    </div>
+                </div>
         </div>
     </main>
 </div>
 
 <div id="info" style="position:absolute; top: 0; left: 0; width: 100%;"></div>
-<script src="http://localhost:8081/app.es5.js"></script>
+<script src="app.es5.js"></script>
 
 </body>
 </html>
