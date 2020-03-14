@@ -1,5 +1,6 @@
 export const translations = {
     en: {
+        title: "IVAO FR Entry Tool",
         left_hand: "Non-standard pattern",
         direct: "Direct",
         teardrop: "Teardrop",
@@ -11,6 +12,7 @@ export const translations = {
         outbound_leg: "Outbound leg",
      },
     fr: {
+        title: "Outil d'entrée en attente IVAO FR",
         left_hand: "Circuit non standard",
         direct: "Entrée directe",
         teardrop: "Entrée décalée",

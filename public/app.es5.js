@@ -23570,7 +23570,7 @@ img.onload = function (cb) {
     updateEntry();
 };
 var lang = 'fr';
-var center = new paper.Point(300, 300);
+var center = new paper.Point(325, 300);
 var beacon = new paper.Shape.Circle(center, 6);
 beacon.fillColor = new Color('green');
 var circle = new circle_1.nCircle(center, 200, "#333333");
@@ -23799,13 +23799,14 @@ function updateEntry() {
         }
     }
     text.fontSize = 24;
-    text.fillColor = new Color('steelblue');
-    text.strokeColor = new Color('steelblue');
-    text.strokeWidth = 1.5;
-    text.shadowColor = new paper.Color(70, 130, 180);
+    text.fillColor = new Color('#2e4b6c');
+    text.strokeColor = new Color('#2e4b6c');
+    text.strokeWidth = 0;
+    text.shadowColor = new paper.Color('#2e4b6c');
     // Set the shadow blur radius to 12:
-    text.shadowBlur = 0;
-    text.shadowOffset = new paper.Point(1, 1);
+    text.fontWeight = 700;
+    text.shadowBlur = 1;
+    text.shadowOffset = new paper.Point(0, 0);
     text.parent = planeText;
     text.position.y = txt_angle > 90 && txt_angle < 270 ? plane.position.y + 80 : plane.position.y - 80;
     text.position.x = txt_angle > 180 ? plane.position.x - 30 : plane.position.x + 30;
@@ -23910,7 +23911,7 @@ function drawParallel(prefix, turning_point) {
     var parallel = new paper.CompoundPath('');
     parallel.name = prefix + "_parallel";
     var point1, point2, point3, point4, arc2_through, segment1, segment2, segment3, arc2, arc_through, arc;
-    var angle = prefix === 'l' ? 40 : -40;
+    var angle = prefix === 'l' ? 42 : -42;
     var modifiers = {
         point1: 5,
         point2: 5,
@@ -23936,10 +23937,10 @@ function drawParallel(prefix, turning_point) {
     arc2 = new paper.Path.Arc(point3, arc2_through, point4);
     arc_through = new paper.Point(point2.x + 30, point2.y + modifiers.arc2_through);
     arc = new paper.Path.Arc(point2, arc_through, point3);
-    var outbnd_arrow = createArrow(arc2_through.x + 15, arc2_through.y - 10);
+    var outbnd_arrow = createArrow(arc2_through.x + 16, arc2_through.y - 10);
     var inbnd_arrow = outbnd_arrow.clone();
     if (prefix === 'l') {
-        outbnd_arrow = createArrow(arc2_through.x + 5, arc2_through.y);
+        outbnd_arrow = createArrow(arc2_through.x + 5, arc2_through.y + 2);
     }
     outbnd_arrow.rotate(angle);
     inbnd_arrow.rotate(180);
@@ -23992,7 +23993,7 @@ function getIntersections(axis, prefix) {
         var intersectionPath = new paper.Path.Circle({
             center: intersections[i].point,
             radius: 4,
-            fillColor: '#FF0000',
+            fillColor: '#000000',
             parent: movable[prefix].intersections
         });
     }
@@ -24042,12 +24043,12 @@ function updateText(last, type) {
     heading = heading < 1 || heading > 359 ? 360 : heading;
     if (type === 'plane') {
         var radial = getRadial(last, plane_radial);
-        $plane_heading.innerHTML = translation_1.translations[lang].plane_heading + " : " + addLeadingZero(heading) + "\xB0";
-        $plane_radial.innerHTML = translation_1.translations[lang].course + " : " + addLeadingZero(radial) + "\xB0";
+        $plane_heading.innerHTML = translation_1.translations[lang].plane_heading + ": " + addLeadingZero(heading) + "\xB0";
+        $plane_radial.innerHTML = translation_1.translations[lang].course + ": " + addLeadingZero(radial) + "\xB0";
     }
     if (type === 'axis') {
         var radial = getRadial(last, axis_radial);
-        $outbound_radial.innerHTML = translation_1.translations[lang].outbound_leg + " " + addLeadingZero(radial) + "\xB0";
+        $outbound_radial.innerHTML = translation_1.translations[lang].outbound_leg + ": " + addLeadingZero(radial) + "\xB0";
     }
 }
 function getRadial(last, radial) {
@@ -24073,7 +24074,7 @@ function getHeading(last) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.translations = {
     en: {
-        left_hand: "Left hand",
+        left_hand: "Non-standard pattern",
         direct: "Direct",
         teardrop: "Teardrop",
         parallel: "Parallel",
@@ -24084,7 +24085,7 @@ exports.translations = {
         outbound_leg: "Outbound leg"
     },
     fr: {
-        left_hand: "Main gauche",
+        left_hand: "Circuit non standard",
         direct: "Entrée directe",
         teardrop: "Entrée décalée",
         parallel: "Entrée parallèle",

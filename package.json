@@ -1,10 +1,13 @@
 {
   "name": "easyentries",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Interactive entry tool",
   "repository": "https://gitlab.com/ivao-fr/easyentries.git",
   "license": "Private",
+  "files": [
+    "public"
+  ],
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
