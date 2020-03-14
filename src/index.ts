@@ -28,8 +28,6 @@ const $outbound_input = document.getElementById('outbound-input');
 const $outbound_btn = document.getElementById('outbound-btn');
 
 
-
-
 let axis_radial = 90;
 let plane_radial = 180;
 
@@ -50,7 +48,7 @@ img.onload = (cb) => {
     updateEntry();
 };
 
-let lang = 'fr';
+let lang = (document.location.hash === "#fr" || document.location.hash === "#en")  ? document.location.hash.replace('#','') : document.documentElement.lang ;
 
 let center = new paper.Point(325,300);
 let beacon = new paper.Shape.Circle(center,6);
@@ -181,11 +179,20 @@ function onStdChange(event){
 }
 
 function onLangChange(event){
-    lang = (event) ? event.target.dataset.lang : 'fr';
+    lang = (event) ? event.target.dataset.lang : lang;
+    let $button = document.querySelectorAll('.switchlang');
     if(event) {
-        let $button = document.querySelectorAll('.switchlang');
         $button.forEach($btn => $btn.classList.remove('active'));
         event.target.classList.add('active');
+        document.location.hash = `#${lang}`
+    }else{
+        $button.forEach($btn => $btn.classList.remove('active'));
+        $button.forEach($btn => {
+            //@ts-ignore
+            if($btn.dataset.lang === lang){
+                $btn.classList.add('active')
+            }
+        });
     }
 
     let translatables = document.querySelectorAll('.translatable');
