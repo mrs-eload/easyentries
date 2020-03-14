@@ -1,6 +1,6 @@
 export const translations = {
     en: {
-        left_hand: "Left hand",
+        left_hand: "Non-standard pattern",
         direct: "Direct",
         teardrop: "Teardrop",
         parallel: "Parallel",
@@ -11,7 +11,7 @@ export const translations = {
         outbound_leg: "Outbound leg",
      },
     fr: {
-        left_hand: "Main gauche",
+        left_hand: "Circuit non standard",
         direct: "Entrée directe",
         teardrop: "Entrée décalée",
         parallel: "Entrée parallèle",

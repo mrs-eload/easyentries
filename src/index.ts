@@ -52,7 +52,7 @@ img.onload = (cb) => {
 
 let lang = 'fr';
 
-let center = new paper.Point(300,300);
+let center = new paper.Point(325,300);
 let beacon = new paper.Shape.Circle(center,6);
 beacon.fillColor = new Color('green');
 let circle = new nCircle(center, 200,"#333333");
@@ -315,13 +315,14 @@ function updateEntry(){
     }
 
     text.fontSize = 24;
-    text.fillColor = new Color('steelblue');
-    text.strokeColor = new Color('steelblue');
-    text.strokeWidth = 1.5;
-    text.shadowColor = new paper.Color(70,130,180);
+    text.fillColor = new Color('#2e4b6c');
+    text.strokeColor = new Color('#2e4b6c');
+    text.strokeWidth = 0;
+    text.shadowColor = new paper.Color('#2e4b6c');
     // Set the shadow blur radius to 12:
-    text.shadowBlur = 0;
-    text.shadowOffset = new paper.Point(1, 1);
+    text.fontWeight = 700;
+    text.shadowBlur = 1;
+    text.shadowOffset = new paper.Point(0, 0);
     text.parent = planeText;
     text.position.y = (txt_angle > 90 && txt_angle < 270 ) ? plane.position.y + 80 : plane.position.y - 80;
     text.position.x = (txt_angle > 180) ? plane.position.x - 30 : plane.position.x + 30;
@@ -453,7 +454,7 @@ function drawParallel(prefix, turning_point){
 
     let point1, point2, point3, point4, arc2_through, segment1,segment2,segment3,arc2,arc_through,arc;
 
-    let angle = (prefix === 'l') ? 40 : - 40;
+    let angle = (prefix === 'l') ? 42 : - 42;
     let modifiers = {
         point1: 5,
         point2: 5,
@@ -482,10 +483,10 @@ function drawParallel(prefix, turning_point){
     arc_through = new paper.Point(point2.x +  30 , point2.y + modifiers.arc2_through);
     arc = new paper.Path.Arc(point2, arc_through, point3);
 
-    let outbnd_arrow = createArrow(arc2_through.x + 15, arc2_through.y - 10);
+    let outbnd_arrow = createArrow(arc2_through.x + 16, arc2_through.y - 10);
     let inbnd_arrow = outbnd_arrow.clone();
     if( prefix === 'l'){
-        outbnd_arrow = createArrow(arc2_through.x + 5, arc2_through.y );
+        outbnd_arrow = createArrow(arc2_through.x + 5, arc2_through.y +2 );
     }
 
     outbnd_arrow.rotate(angle);
@@ -550,7 +551,7 @@ function getIntersections(axis, prefix){
         let intersectionPath = new paper.Path.Circle({
             center: intersections[i].point,
             radius: 4,
-            fillColor: '#FF0000',
+            fillColor: '#000000',
             parent: movable[prefix].intersections
         });
     }
@@ -604,13 +605,13 @@ function updateText (last, type){
     heading = (heading < 1 || heading > 359) ? 360 : heading;
     if(type === 'plane'){
         let radial = getRadial(last, plane_radial);
-        $plane_heading.innerHTML = `${translations[lang].plane_heading} : ${addLeadingZero(heading)}°`;
-        $plane_radial.innerHTML = `${translations[lang].course } : ${addLeadingZero(radial)}°`;
+        $plane_heading.innerHTML = `${translations[lang].plane_heading}: ${addLeadingZero(heading)}°`;
+        $plane_radial.innerHTML = `${translations[lang].course }: ${addLeadingZero(radial)}°`;
     }
 
     if(type === 'axis'){
         let radial = getRadial(last, axis_radial);
-        $outbound_radial.innerHTML = `${translations[lang].outbound_leg} ${addLeadingZero(radial)}°`;
+        $outbound_radial.innerHTML = `${translations[lang].outbound_leg}: ${addLeadingZero(radial)}°`;
     }
 }
 
