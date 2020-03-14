@@ -23569,7 +23569,7 @@ img.onload = function (cb) {
     updateAxis(0, 0);
     updateEntry();
 };
-var lang = 'fr';
+var lang = document.location.hash === "#fr" || document.location.hash === "#en" ? document.location.hash.replace('#', '') : document.documentElement.lang;
 var center = new paper.Point(325, 300);
 var beacon = new paper.Shape.Circle(center, 6);
 beacon.fillColor = new Color('green');
@@ -23685,13 +23685,24 @@ function onStdChange(event) {
     updateEntry();
 }
 function onLangChange(event) {
-    lang = event ? event.target.dataset.lang : 'fr';
+    lang = event ? event.target.dataset.lang : lang;
+    var $button = document.querySelectorAll('.switchlang');
     if (event) {
-        var $button = document.querySelectorAll('.switchlang');
         $button.forEach(function ($btn) {
             return $btn.classList.remove('active');
         });
         event.target.classList.add('active');
+        document.location.hash = "#" + lang;
+    } else {
+        $button.forEach(function ($btn) {
+            return $btn.classList.remove('active');
+        });
+        $button.forEach(function ($btn) {
+            //@ts-ignore
+            if ($btn.dataset.lang === lang) {
+                $btn.classList.add('active');
+            }
+        });
     }
     var translatables = document.querySelectorAll('.translatable');
     for (var i = 0; i < translatables.length; i++) {
@@ -24074,6 +24085,7 @@ function getHeading(last) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.translations = {
     en: {
+        title: "IVAO FR Entry Tool",
         left_hand: "Non-standard pattern",
         direct: "Direct",
         teardrop: "Teardrop",
@@ -24085,6 +24097,7 @@ exports.translations = {
         outbound_leg: "Outbound leg"
     },
     fr: {
+        title: "Outil d'entrée en attente IVAO FR",
         left_hand: "Circuit non standard",
         direct: "Entrée directe",
         teardrop: "Entrée décalée",
