@@ -1,3 +1,8 @@
+/**
+ * @author mrs-eload
+ *
+ */
+
 import * as paper from 'paper'
 import Color = paper.Color;
 import CompoundPath = paper.CompoundPath;
