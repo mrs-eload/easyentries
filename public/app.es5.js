@@ -23560,7 +23560,7 @@ paper.setup(canvas);
 var project = paper.project;
 var plane = null;
 var img = new Image();
-img.src = "/aeroplane.svg";
+img.src = "aeroplane.svg";
 img.id = "plane";
 img.onload = function (cb) {
     draw();

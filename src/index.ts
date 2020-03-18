@@ -37,7 +37,7 @@ let project = paper.project;
 let plane = null;
 
 const img = new Image();
-img.src = "/aeroplane.svg";
+img.src = "aeroplane.svg";
 img.id = "plane";
 
 img.onload = (cb) => {
@@ -223,7 +223,6 @@ function draw () {
     plane.height = 100;
     plane.position = circle.deg180;
     plane_layer.addChild(plane);
-    console.log(project);
 }
 
 function switchHand (prefix) {
