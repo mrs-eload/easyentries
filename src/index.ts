@@ -494,23 +494,27 @@ function drawParallel(prefix, turning_point){
     arc_through = new paper.Point(point2.x +  30 , point2.y + modifiers.arc2_through);
     arc = new paper.Path.Arc(point2, arc_through, point3);
 
-    let outbnd_arrow = createArrow(arc2_through.x + 16, arc2_through.y - 10);
-    let inbnd_arrow = outbnd_arrow.clone();
+    let arrow_head = new paper.Point(arc2_through.x + 6, arc2_through.y - 10);
     if( prefix === 'l'){
-        outbnd_arrow = createArrow(arc2_through.x + 5, arc2_through.y +2 );
+        arrow_head = new paper.Point(arc2_through.x + 11, arc2_through.y + 15 );
     }
 
-    outbnd_arrow.rotate(angle);
-    inbnd_arrow.rotate(180);
-    inbnd_arrow.position.y = point2.y;
+    let inbnd_arrow = createArrow(arrow_head.x, arrow_head.y);
+    let outbnd_arrow = inbnd_arrow.clone();
+
+    inbnd_arrow.rotate(angle);
+    inbnd_arrow.rotate(180, arrow_head);
+
+    outbnd_arrow.rotate(0);
+    outbnd_arrow.position.y = point2.y;
 
     parallel.addChild(segment1);
     parallel.addChild(segment2);
     parallel.addChild(arc);
     parallel.addChild(arc2);
     parallel.addChild(segment3);
-    parallel.addChild(inbnd_arrow);
     parallel.addChild(outbnd_arrow);
+    parallel.addChild(inbnd_arrow);
 
 
     parallel.strokeColor = new Color('#0000FF');

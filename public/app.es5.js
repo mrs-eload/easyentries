@@ -23531,6 +23531,10 @@ exports.nCircle = nCircle;
 
 "use strict";
 
+/**
+ * @author mrs-eload
+ *
+ */
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var paper = __webpack_require__(/*! paper */ "./node_modules/paper/dist/paper-full.js");
@@ -23728,7 +23732,6 @@ function draw() {
     plane.height = 100;
     plane.position = circle.deg180;
     plane_layer.addChild(plane);
-    console.log(project);
 }
 function switchHand(prefix) {
     for (var hand in movable) {
@@ -23948,21 +23951,23 @@ function drawParallel(prefix, turning_point) {
     arc2 = new paper.Path.Arc(point3, arc2_through, point4);
     arc_through = new paper.Point(point2.x + 30, point2.y + modifiers.arc2_through);
     arc = new paper.Path.Arc(point2, arc_through, point3);
-    var outbnd_arrow = createArrow(arc2_through.x + 16, arc2_through.y - 10);
-    var inbnd_arrow = outbnd_arrow.clone();
+    var arrow_head = new paper.Point(arc2_through.x + 6, arc2_through.y - 10);
     if (prefix === 'l') {
-        outbnd_arrow = createArrow(arc2_through.x + 5, arc2_through.y + 2);
+        arrow_head = new paper.Point(arc2_through.x + 11, arc2_through.y + 15);
     }
-    outbnd_arrow.rotate(angle);
-    inbnd_arrow.rotate(180);
-    inbnd_arrow.position.y = point2.y;
+    var inbnd_arrow = createArrow(arrow_head.x, arrow_head.y);
+    var outbnd_arrow = inbnd_arrow.clone();
+    inbnd_arrow.rotate(angle);
+    inbnd_arrow.rotate(180, arrow_head);
+    outbnd_arrow.rotate(0);
+    outbnd_arrow.position.y = point2.y;
     parallel.addChild(segment1);
     parallel.addChild(segment2);
     parallel.addChild(arc);
     parallel.addChild(arc2);
     parallel.addChild(segment3);
-    parallel.addChild(inbnd_arrow);
     parallel.addChild(outbnd_arrow);
+    parallel.addChild(inbnd_arrow);
     parallel.strokeColor = new Color('#0000FF');
     parallel.strokeWidth = 2;
     return parallel;
