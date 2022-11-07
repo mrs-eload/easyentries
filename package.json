@@ -41,7 +41,7 @@
     "on-build-webpack": "^0.1.0",
     "parallel-webpack": "^2.2.0",
     "remove-webpack-plugin": "^1.2.2",
-    "replace": "^0.3.0",
+    "replace": "^1.2.2",
     "resolve-url-loader": "^2.2.1",
     "sass-loader": "^6.0.6",
     "string-replace-webpack-plugin": "^0.1.3",
